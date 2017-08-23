@@ -8,11 +8,20 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new(tweet_params)
 
     if @tweet.save
-      redirect_to tweets_path
-    else
-      render :index
+
+
+    respond_to do |format|
+      format.html
+      format.json do
+        @response = {"message"=>@tweet.message, "created_at"=>@tweet.created_at}
+        render json: @response
+        end
+      end
+
     end
   end
+
+
 
   def destroy
   end

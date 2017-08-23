@@ -13,9 +13,13 @@ button.addEventListener('submit',function(e) {
   data: $(this).serialize(),
   dataType: 'json'
 }).done(function(data) {
+  console.log(data);
   var ul = document.querySelector('ul.tweets');
   var span = document.createElement('span');
-  span.innerHTML = data;
+  var message = data.message;
+  var created_at = data.created_at;
+  span.append(message);
+  span.append(created_at);
   ul.insertBefore(span, ul.childNodes[0]);
 });
 
