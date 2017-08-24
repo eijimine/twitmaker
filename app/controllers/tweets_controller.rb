@@ -13,8 +13,7 @@ class TweetsController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        @response = {"message"=>@tweet.message, "created_at"=>@tweet.created_at}
-        render json: @response
+      render json: @tweet
         end
       end
 
